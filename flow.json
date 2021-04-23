@@ -1,1 +1,515 @@
-[]
+[
+    {
+        "id": "df1a4a49.fad898",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2f43115a.3161de",
+        "type": "tab",
+        "label": "Terremotos",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ddd9e81.b164618",
+        "type": "tab",
+        "label": "Temperatura",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "24264458.be95dc",
+        "type": "tab",
+        "label": "aedes",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a4bab372.008b8",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "ce4786ed.0a39a8",
+        "type": "subflow",
+        "name": "Subflow 2",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "7729bae5.29fa84",
+        "type": "mqtt-broker",
+        "name": "enriquecrespo.com",
+        "broker": "mqtt://enriquecrespo.com",
+        "port": "8883",
+        "tls": "",
+        "clientid": "",
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3a8fb679.94307a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "enriquecrespo.com",
+        "port": "1884",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "52f726d8.6a4fc8",
+        "type": "inject",
+        "z": "ce4786ed.0a39a8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "c2af2538.7fb5a8"
+            ]
+        ]
+    },
+    {
+        "id": "c2af2538.7fb5a8",
+        "type": "debug",
+        "z": "ce4786ed.0a39a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "2abf93cd.ca5b3c",
+        "type": "mqtt in",
+        "z": "2f43115a.3161de",
+        "name": "",
+        "topic": "aprendiendonodered21/enrique/raspberrypi2/enrique/Temperatura",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7729bae5.29fa84",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 690,
+        "y": 560,
+        "wires": [
+            [
+                "12ddfe0e.5594e2"
+            ]
+        ]
+    },
+    {
+        "id": "12ddfe0e.5594e2",
+        "type": "debug",
+        "z": "2f43115a.3161de",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "ba38cd83.cbe5",
+        "type": "mqtt out",
+        "z": "2f43115a.3161de",
+        "name": "",
+        "topic": "aprendiendonodered21/almena/temperatura",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7729bae5.29fa84",
+        "x": 1130,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "8c2b1e6b.f4a39",
+        "type": "inject",
+        "z": "2f43115a.3161de",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5ºc",
+        "payloadType": "str",
+        "x": 770,
+        "y": 700,
+        "wires": [
+            [
+                "ba38cd83.cbe5"
+            ]
+        ]
+    },
+    {
+        "id": "54a5fff5.4fe31",
+        "type": "mqtt out",
+        "z": "2f43115a.3161de",
+        "name": "",
+        "topic": "aprendiendonodered21/almena/humedad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7729bae5.29fa84",
+        "x": 1080,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "bcdd4d7d.6e8f1",
+        "type": "mqtt in",
+        "z": "ddd9e81.b164618",
+        "name": "",
+        "topic": "aprendiendonodered21/enrique/raspberrypi2/enrique/temperatura",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7729bae5.29fa84",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 530,
+        "y": 340,
+        "wires": [
+            [
+                "2ab66a1a.7c3d26",
+                "662318ba.2c0fe8"
+            ]
+        ]
+    },
+    {
+        "id": "8d6c66cf.bbf858",
+        "type": "rbe",
+        "z": "ddd9e81.b164618",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "x": 1050,
+        "y": 480,
+        "wires": [
+            [
+                "1cd5624d.0d96fe"
+            ]
+        ]
+    },
+    {
+        "id": "1cd5624d.0d96fe",
+        "type": "debug",
+        "z": "ddd9e81.b164618",
+        "name": "Aviso final",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2ab66a1a.7c3d26",
+        "type": "switch",
+        "z": "ddd9e81.b164618",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "30",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 640,
+        "y": 480,
+        "wires": [
+            [
+                "eee3b3c6.66999"
+            ],
+            [
+                "280c84d9.8ad6bc"
+            ]
+        ]
+    },
+    {
+        "id": "eee3b3c6.66999",
+        "type": "change",
+        "z": "ddd9e81.b164618",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Temperatura alta",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 460,
+        "wires": [
+            [
+                "8d6c66cf.bbf858"
+            ]
+        ]
+    },
+    {
+        "id": "280c84d9.8ad6bc",
+        "type": "change",
+        "z": "ddd9e81.b164618",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Temperatura normal",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 500,
+        "wires": [
+            [
+                "8d6c66cf.bbf858"
+            ]
+        ]
+    },
+    {
+        "id": "662318ba.2c0fe8",
+        "type": "debug",
+        "z": "ddd9e81.b164618",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9b9dbb11.38e7c8",
+        "type": "inject",
+        "z": "2f43115a.3161de",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "36%",
+        "payloadType": "str",
+        "x": 770,
+        "y": 760,
+        "wires": [
+            [
+                "54a5fff5.4fe31"
+            ]
+        ]
+    },
+    {
+        "id": "57e05e28.faa64",
+        "type": "aedes broker",
+        "z": "24264458.be95dc",
+        "name": "aedes MQTT broker",
+        "mqtt_port": "1884",
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "dburl": "",
+        "usetls": false,
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "18a21914.561fa7"
+            ]
+        ]
+    },
+    {
+        "id": "18a21914.561fa7",
+        "type": "debug",
+        "z": "24264458.be95dc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "da7b93d3.961de",
+        "type": "mqtt out",
+        "z": "24264458.be95dc",
+        "name": "",
+        "topic": "aprendiendonodered21/almena",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3a8fb679.94307a",
+        "x": 500,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "af5c1022.9ae0e",
+        "type": "inject",
+        "z": "24264458.be95dc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "almena",
+        "payloadType": "str",
+        "x": 220,
+        "y": 300,
+        "wires": [
+            [
+                "da7b93d3.961de"
+            ]
+        ]
+    }
+]
